@@ -1,0 +1,1 @@
+console.log(5e4 + 5e4)
