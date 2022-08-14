@@ -30,16 +30,15 @@ const showSingle = (id) => {
     }
     console.log(`${user.id}- ${user.name}`)
 }
-
-// const deleteUser = (id) => {
-//     const allUser = deal.readFromJson()
-//     const user = allUser.splice(user => user.id == id)
-//     if (!user) {
-//         return console.log('not found')
-//     }
-//     console.log("user deleted")
-// }
+const deleteUser = (id) => {
+    const allUsers = deal.readFromJson()
+    const userIndex = allUsers.findIndex(user => user.id == id)
+    allUsers.splice(userIndex, 1)
+    deal.writeToJson(allUsers)
+    console.log(allUsers);
+}
 
 
 
-module.exports = { add, showALL, showSingle, }
+
+module.exports = { add, showALL, showSingle, deleteUser }

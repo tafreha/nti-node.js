@@ -1,5 +1,4 @@
 const { argv } = require("process")
-const { string } = require("yargs")
 const yargs = require("yargs")
 const user = require("./controller/user.controller")
 
