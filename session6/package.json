@@ -1,16 +1,15 @@
 {
-  "name": "c",
+  "name": "session6",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "due-date-calculator": "^1.0.1",
-    "unique-names-generator": "^4.7.1",
-    "validation": "^0.0.1"
+    "yargs": "^17.5.1"
   }
 }
