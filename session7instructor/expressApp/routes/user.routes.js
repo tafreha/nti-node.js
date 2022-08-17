@@ -1,0 +1,10 @@
+const router = require("express").Router()
+const userController = require("../controller/user.controller")
+router.get("/add", userController.add)
+router.get("/addPost", userController.addPost)
+router.post("/addPost", userController.addPostLogic)
+router.get("/", userController.all)
+router.get("/edit/id", userController.edit)
+router.get("/singe/id", userController.single)
+router.get("/del/id", userController.del)
+module.exports = router
