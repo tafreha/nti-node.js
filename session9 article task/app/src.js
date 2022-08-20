@@ -7,7 +7,7 @@ app.set("view engine", "hbs")
 app.set("views", path.join(__dirname, "../public/views"))
 hbs.registerPartials(path.join(__dirname, "../public/layouts"))
 app.use(express.urlencoded({ extended: true }))
-const userRouter = require("../routes/user.route")
+const userRouter = require("../routes/article.route")
 app.use(userRouter)
 app.all("*", (req, res) => res.render("error404", { pageTitle: "page not found" }))
 module.exports = app
