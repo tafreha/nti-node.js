@@ -2,11 +2,11 @@
 {{>navbar}}
 <form method="post">
 <div class="mb-3">
-	<input placeholder="article address" name="article-address" class="form-control" value="{{data.article-address}}">
-	<p>{{errors.article-address}}</p>
+	<input placeholder="article title" name="title" class="form-control" value="{{data.title}}">
+	<p>{{errors.title}}</p>
 </div>
 <div class=" form-outline mb-4 ">
-	<textarea placeholder="article content" name="article-content"  row=" 12" class="form-control" value="{{data.article-content}}">
+	<textarea placeholder="article content" name="content"  row=" 12"  class="form-control" value="{{data.content}}">
 		</textarea>
 	<p>{{errors.article-content}}</p>
 </div>

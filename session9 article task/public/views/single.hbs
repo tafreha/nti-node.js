@@ -3,15 +3,15 @@
 {{#unless article}}
 <div class="alert alert-danger"> article not found</div>
 {{else}}
-<div>{{article.article-address}}</div>
-<div>{{article.article-content}}</div>
+<div>{{article.title}}</div>
+<div>{{article.content}}</div>
 <form method="post">
 <div class="mb-3">
 	<input placeholder="comment title" name="comment-title" class="form-control" value="{{data.comment-title}}">
 	
 </div>
 <div class=" form-outline mb-4 ">
-	<textarea placeholder="message" name="message"  row=" 12" class="form-control" value="{{data.message}}">
+	<textarea placeholder="message" name="message"  row=" 12" class="form-control" width="500px" value="{{data.message}}">
 		</textarea>
 	
 </div>
