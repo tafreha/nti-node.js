@@ -1,0 +1,20 @@
+{{>header}}
+{{>navbar}}
+{{#unless article}}
+<div class="alert alert-danger"> article not found</div>
+{{else}}
+<form method="post"><div class="mb-3"><input placeholder="article name" name="article-name"
+class="form-control" value="{{articles.article-address}}">
+
+</div>
+<div class="mb-3">
+	<textarea placeholder="article content" name="article-content"  row=" 12" class="form-control" value="{{data.article-content}}">
+		</textarea>
+</div>
+<div class="mb-3">
+            <button class="btn btn-primary">Edit</button>
+
+</form>
+
+
+{{>footer}}

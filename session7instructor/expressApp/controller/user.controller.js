@@ -38,29 +38,28 @@ class user {
         let errors = {},
             hasError = false
         if (!req.body.name) {
-
             errors.name = "please add a name"
             hasError = true
         }
         if (!req.body.age) {
-
             errors.age = "please add a age"
             hasError = true
         }
         if (!req.body.email) {
-
             errors.email = "please add email"
             hasError = true
         }
         console.log(errors)
-        if (hasError) return
-        res.render("addPost", {
-            data: req.body,
-            errors
+        if (hasError)
+            return res.render("addPost", {
+                data: req.body,
+                errors
+            })
 
-        })
-
-
+        const users = deal.readFromJson()
+        users.push({ id: Date.now(), ...req.body })
+        deal.writeToJSON(users)
+        res.redirect("/")
     }
     static edit = (req, res) => {
         const user = { name: "marwa", age: 37, email: "marwa@techsexperts.com" }
@@ -71,21 +70,27 @@ class user {
     }
 
     static all = (req, res) => {
-        res.render("all", {
-            pageTitle: "Home Page",
-            pageContent: "hello from page 0"
-        })
+        res.render("all", )
     }
 
     static single = (req, res) => {
-        res.render("single", {
-            pageTitle: "single user"
-        })
+        const userId = req.params.id
+        const users = deal.readFromJson()
+        const id = deal.getIndex(users, userId, "id")
+        let result = { pageTitle: "user single", isEmpty }
+        if (id == -1) return
+        res.render("single", result)
     }
     static del = (req, res) => {
-        res.render("del", {
-            pageTitle: "single user"
-        })
+        const userId = req.params.id
+        const users = deal.readFromJson()
+        const id = deal.getIndex(users, userId, "id")
+        if (id == -1) return res.redirect("notFound")
+        users.splice(id, 1)
+        deal.writeToJSON(users)
+        res.redirect("/")
+
+
     }
 }
 module.exports = user

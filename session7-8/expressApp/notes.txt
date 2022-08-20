@@ -1,0 +1,9 @@
+add , edit , all, single , error404
+
+
+name:"a", age:1, email:"gdy"
+{id:123, name:"a", age:1, email:"gdy"}
+
+x= [1,2,3]
+y=5
+[...x, y]

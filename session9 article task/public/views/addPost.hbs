@@ -1,0 +1,17 @@
+{{>header}}
+{{>navbar}}
+<form method="post">
+<div class="mb-3">
+	<input placeholder="article address" name="article-address" class="form-control" value="{{data.article-address}}">
+	<p>{{errors.article-address}}</p>
+</div>
+<div class=" form-outline mb-4 ">
+	<textarea placeholder="article content" name="article-content"  row=" 12" class="form-control" value="{{data.article-content}}">
+		</textarea>
+	<p>{{errors.article-content}}</p>
+</div>
+<button type="submit" class="btn btn-primary mb-2 btn-block"> add article</button>
+
+</form>
+
+{{>footer}}

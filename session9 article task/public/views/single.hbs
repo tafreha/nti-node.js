@@ -1,0 +1,26 @@
+{{>header}}
+{{>navbar}}
+{{#unless article}}
+<div class="alert alert-danger"> article not found</div>
+{{else}}
+<div>{{article.article-address}}</div>
+<div>{{article.article-content}}</div>
+<form method="post">
+<div class="mb-3">
+	<input placeholder="comment title" name="comment-title" class="form-control" value="{{data.comment-title}}">
+	
+</div>
+<div class=" form-outline mb-4 ">
+	<textarea placeholder="message" name="message"  row=" 12" class="form-control" value="{{data.message}}">
+		</textarea>
+	
+</div>
+<button type="submit" class="btn btn-primary mb-2 btn-block"> add comment</button>
+
+</form>
+
+{{/unless}}
+
+
+
+{{>footer}}
