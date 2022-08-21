@@ -87,7 +87,7 @@ class Article {
     }
 
     static addComment = (req, res) => {
-        res.render("addComment", {
+        res.render("single", {
             pageTitle: " article"
         })
     }
@@ -102,7 +102,7 @@ class Article {
                 db.collection("articles").updateOne({ _id: ObjectId(req.params.id) }, { $push: { "comments": { id: Date.now(), ...req.body } } })
                     .then((result) => {
                         console.log(result);
-                        // res.redirect(`/single/${(req.params.id)}`);
+                        res.redirect(`/single/${(req.params.id)}`);
                     }).catch((e) => {
                         console.log(e);
                         res.render("error404", { error: 'Failed to Add a Comment' });
