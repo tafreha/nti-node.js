@@ -86,9 +86,6 @@ class Article {
         })
     }
 
-
-
-
     static addComment = (req, res) => {
 
         const ArticleId = req.params.id
@@ -108,7 +105,7 @@ class Article {
         const ArticleId = req.params.id
         connection((err, db) => {
             if (err) res.render("error404")
-            const article = db.collection("articles").updateOne({ _id: new ObjectId(ArticleId) }, { $push: { comments: req.body } })
+            const article = db.collection("article").updateOne({ _id: new ObjectId(ArticleId) }, { $push: { comments: req.body } })
 
             .then((r) => {
                     res.redirect(`/single/${ArticleId}`)
