@@ -1,0 +1,11 @@
+customer => name, balance, address type, details, created, updated, pass , username
+
+
+login
+register
+//must login
+edit profile 
+view profile
+logout
+proceed balance (withdraw, add)
+
