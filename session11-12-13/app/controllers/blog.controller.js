@@ -9,20 +9,30 @@ class Blog {
         }
     }
     static create = async(req, res) => {
-        try {
-            const blogData = new blogmodel({
-                userId: req.user._id,
-                ...req.body
-            })
-            await blogData.save()
-            res.send({ apiStatus: true, data: blogData, message: "done" })
-        } catch (e) {
-            res.send({ apiStatus: false, message: e.message, data: e })
+            try {
+                const blogData = new blogmodel({
+                    userId: req.user._id,
+                    ...req.body
+                })
+                await blogData.save()
+                res.send({ apiStatus: true, data: blogData, message: "done" })
+            } catch (e) {
+                res.send({ apiStatus: false, message: e.message, data: e })
+            }
         }
-    }
-    static myArticles = async(req, res) => { // localhost:3000/blog/
+        // static myArticles = async(req, res) => { // localhost:3000/blog/
+        //         try {
+        //             const blogData = await blogmodel.find({ userId: req.user._id })
+        //             res.send({ apiStatus: true, data: blogData, message: "done" })
+        //         } catch (e) {
+        //             res.send({ apiStatus: false, message: e.message, data: e })
+        //         }
+        //     }
+        // ////// second method to get myposts
+    static myArticles = async(req, res) => {
+        // localhost:3000/blog/
         try {
-            const blogData = await blogmodel.find({ userId: req.user._id })
+            await req.user.populate("myPosts")
             res.send({ apiStatus: true, data: blogData, message: "done" })
         } catch (e) {
             res.send({ apiStatus: false, message: e.message, data: e })

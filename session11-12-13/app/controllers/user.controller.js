@@ -1,5 +1,4 @@
 const userModel = require("../database/models/user.model")
-const jwt = require("../middleware/auth.middleware")
 
 class User {
     static index = async(req, res) => {
@@ -79,6 +78,11 @@ class User {
             message: "done",
             data: req.user
         })
+    }
+    static upImg = async(req, res) => {
+        req.user.userImage = req.file.filename
+        await req.user.save()
+        res.send(req.user)
     }
 }
 module.exports = User

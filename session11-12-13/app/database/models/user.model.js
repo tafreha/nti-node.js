@@ -1,6 +1,7 @@
 const mongoose = require("mongoose")
 const bcyptjs = require("bcryptjs")
 const jwt = require("jsonwebtoken")
+const Blog = require("./blog.model")
 const userSchema = mongoose.Schema({
     name: {
         type: String,
@@ -33,6 +34,9 @@ const userSchema = mongoose.Schema({
             trim: true
         }
     }],
+    userImage: {
+        type: String
+    },
 
     tokens: [{
         token: {
@@ -42,6 +46,12 @@ const userSchema = mongoose.Schema({
     }]
 }, {
     timestamps: true
+})
+
+userSchema.virtual("myPosts", {
+    ref: "Blog",
+    localField: "_id",
+    foreignField: "userId"
 })
 
 userSchema.methods.toJSON = function() {
