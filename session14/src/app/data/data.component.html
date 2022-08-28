@@ -1,0 +1,19 @@
+{{test()}} {{5+6}} {{7>9}} {{name}} {{s}}
+
+<img src="assets/{{myImg}}">
+<p>property Binding</p>
+<P [innerHtml]="s"></P>
+<img [src]="myImg1">
+<h5>event binding</h5>
+<button class="btn btn-primary" (click)="test2()"> hello </button>
+<hr>
+<h4>examples</h4>
+<div class="alert alert-primary" [style.display]="x"> hello from test div</div>
+<button [class]="classList" (click)="showHide()">{{btnText}}</button>
+<input class="form-control" (input)="handleInput($event)">
+<!-- <!..(keydown.enter)="handleInput($event)"..> -->
+<input class="form-control" #myInput ((input)="handle2(myInput)">
+
+<p>{{val}}</p>
+<h4> two way data Biniding</h4>
+<!-- <input [(ngModel)]="myTwoWay"> {{myTwoWay}} -->

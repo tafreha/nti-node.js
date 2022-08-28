@@ -1,0 +1,12 @@
+const express = require("express")
+const app = express()
+require("../database/connection")
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
+const userRoutes = require("../routes/user.routes")
+const productsRoutes = require("../routes/product.routes")
+const cartRoutes = require("../routes/cart.routes")
+app.use("/user", userRoutes)
+app.use("/product", productsRoutes)
+app.use("/cart", cartRoutes)
+module.exports = app
