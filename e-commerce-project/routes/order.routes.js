@@ -5,8 +5,6 @@ const Order = require("../database/models/order.models")
 const Cart = require("../database/models/carts.model")
 const User = require("../database/models/user.model")
 const Auth = require("../middleware/auth.middleware")
-
-
 const router = new express.Router()
 
 const flw = new Flutterwave(process.env.FLUTTERWAVE_V3_PUBLIC_KEY, process.env.FLUTTERWAVE_V3_SECRET_KEY)

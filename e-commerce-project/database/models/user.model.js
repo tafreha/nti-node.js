@@ -24,15 +24,22 @@ const userSchema = new mongoose.Schema({
         type: String,
         // require: true,
     },
+    tokens: [{
+        token: {
+            type: String,
+            required: true
+        }
+    }]
 }, {
     timestamps: true,
 })
 
-// userSchema.virtual("myPosts", {
-//     ref: "product",
-//     localField: "_id",
-//     foreignField: "userId"
-// })
+
+userSchema.virtual("user", {
+    ref: "cart",
+    localField: "_id",
+    foreignField: "userId"
+})
 
 userSchema.methods.toJSON = function() {
     const deleted = ["__v", "password", "tokens"]

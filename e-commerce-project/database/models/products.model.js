@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-const { stringify } = require("querystring");
 const productSchema =
     mongoose.Schema({
         name: { type: String, require: true },
@@ -11,7 +10,17 @@ const productSchema =
             type: Number,
             require: true,
         },
-        images: [],
+        images: {
+            type: String
+        },
     }, { timestamp: true })
+
+
+
+productSchema.virtual("myProducts", {
+    ref: "cart",
+    localField: "_id",
+    foreignField: "productId"
+})
 const product = mongoose.model("product", productSchema)
-module.exports = product;
+module.exports = product

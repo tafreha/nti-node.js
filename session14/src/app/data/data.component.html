@@ -1,6 +1,6 @@
-{{test()}} {{5+6}} {{7>9}} {{name}} {{s}}
+<!-- {{test()}} {{5+6}} {{7>9}} {{name}} {{s}} -->
 
-<img src="assets/{{myImg}}">
+<!-- <img src="assets/{{myImg}}">
 <p>property Binding</p>
 <P [innerHtml]="s"></P>
 <img [src]="myImg1">
@@ -12,8 +12,62 @@
 <button [class]="classList" (click)="showHide()">{{btnText}}</button>
 <input class="form-control" (input)="handleInput($event)">
 <!-- <!..(keydown.enter)="handleInput($event)"..> -->
-<input class="form-control" #myInput ((input)="handle2(myInput)">
+<!-- <input class="form-control" #myInput ((input)="handle2(myInput)">
 
 <p>{{val}}</p>
 <h4> two way data Biniding</h4>
-<!-- <input [(ngModel)]="myTwoWay"> {{myTwoWay}} -->
+<input [(ngModel)]="myTwoWay"> {{myTwoWay}} -->-->
+
+<!-- <input class="form-control" [(ngModel)]="days">
+<div [ngSwitch]="">
+    <div *ngFor="let x of days; let index= index">
+        <li *ngSwitchCase="index">{{x}}</li>
+
+    </div>
+
+
+</div> -->
+
+<!-- <form>
+	<div class="form-check">
+		<input class="form-check-input" type="radio" value="male" id="flexCheckDefault" name="gender" (click)="onChangeGender('male')
+		">
+		<label class="form-check-label" for="flexCheckDefault">
+male		</label>
+	  </div>
+	  <div class="form-check">
+		<input class="form-check-input" type="radio" name="gender" value="female" (click)="onChangeGender('female')
+		"id="flexCheckChecked" checked>
+		<label class="form-check-label" for="flexCheckChecked">
+female		</label>
+	  </div>
+</form> -->
+<!-- <input class="form-control" [(ngModel)]="numbers">
+<div *ngFor="let x of data ;let o=odd,let e=even let i=index" [ngClass]="{ 'bg-danger':o 'bg-success':e}"></div> -->
+
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="search-hero">
+            <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="on" placeholder="&#61442;  Start searching for a hero by id or name or country">
+        </div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Hero Name</th>
+                    <th>Country</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let hero of heroes | filter:searchText">
+                    <td>{{hero.id}}</td>
+                    <td>{{hero.name}}</td>
+                    <td>{{hero.country}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

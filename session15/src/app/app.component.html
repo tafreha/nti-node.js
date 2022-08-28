@@ -1,0 +1,55 @@
+<!-- <section class="my-3 container">
+    <!-- <input class="form-control" [(ngModel)]="monNum">
+    <div [ngSwitch]="monNum">
+        <li *ngSwitchCase="1">Jan</li>
+        <li *ngSwitchCase="2">feb</li>
+        <li *ngSwitchCase="3">mar</li>
+        <li *ngSwitchCase="4">apr</li>
+        <li *ngSwitchCase="5">may</li>
+        <li *ngSwitchDefault>Invalid month number</li>
+    </div> -->
+<!-- <input class="form-control" [(ngModel)]="yearOfBirth">
+    <ul [ngSwitch]="yearOfBirth%12">
+        <div *ngFor="let x of abrag; let index = index">
+            <li  *ngSwitchCase="index">{{x}}</li>
+        </div>
+    </ul> -->
+<!-- <button class="btn btn-primary" (click)="onPress()">Click Me</button>
+    <div *ngIf="clicked; else onP">
+        You have click 
+    </div>
+    <ng-template #onP>
+        <div>You didn't click</div>
+    </ng-template> -->
+<!-- <form>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="gender" id="flexRadioDefault1" value="male" (click)="onChangeGender('male')">
+            <label class="form-check-label" for="flexRadioDefault1">
+              Male
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="gender" id="flexRadioDefault2" value="female" (click)="onChangeGender('female')">
+            <label class="form-check-label" for="flexRadioDefault2">
+              Female
+            </label>
+          </div>
+          <ng-template *ngIf="gender=='male';then male; else female "></ng-template>
+          <ng-template #male> 
+              <div class="mb-3"> 
+                  <input class="form-control" placeholder="martial status">
+              </div>
+          </ng-template>
+          <ng-template #female>
+          <div class="mb-3">
+            <input class="form-control" placeholder="milarty status">
+          </div>
+        </ng-template>
+          <div class="mb-3"></div>
+    </form> -->
+<!-- <button [ngClass]="{'btn':true, 'btn-danger':status, 'btn-success':!status}" (click)="changeStatus()">change me</button>
+</section> -->-->
+
+<app-navbar></app-navbar>
+<app-footer></app-footer>
+<router-outlet></router-outlet>

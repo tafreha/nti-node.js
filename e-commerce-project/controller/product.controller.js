@@ -11,9 +11,9 @@ class product {
     }
     static add = async(req, res) => {
         try {
-            const productData = new productModel(req.body)
-            await productData.save()
-            res.send({ apiStatus: true, message: "product added", data: productData })
+            const data = new productModel(req.body)
+            await data.save()
+            res.send({ apiStatus: true, message: "product added", data })
         } catch (e) {
             res.send({ apiStatus: false, message: e.message, data: e })
         }
@@ -25,8 +25,16 @@ class product {
         } catch (e) {
             res.send({ apiStatus: false, message: e.message, data: e })
         }
-
     }
+    static myProducts = async(req, res) => { // localhost:3000/product/
+        try {
+            await req.user.populate("myProducts")
+            res.send({ apiStatus: true, data: req.user.myProducts, message: "done" })
+        } catch (e) {
+            res.send({ apiStatus: false, message: e.message, data: e })
+        }
+    }
+
     static edit = async(req, res) => {
         try {
             const data = await productModel.findByIdAndUpdate(
@@ -51,7 +59,7 @@ class product {
 
 
     static upImg = async(req, res) => {
-        req.product.productImage = req.file.filename
+        req.productModel.images = req.file.filename
         await req.product.save()
         res.send(req.product)
     }
