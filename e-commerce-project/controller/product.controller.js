@@ -59,9 +59,9 @@ class product {
 
 
     static upImg = async(req, res) => {
-        req.productModel.images = req.file.filename
-        await req.product.save()
-        res.send(req.product)
+        // req.product.images = req.file.filename
+        // await req.product.save()
+        res.send("done")
     }
 }
 module.exports = product

@@ -1,0 +1,35 @@
+<div class="alert alert-primary">
+    valid=>{{register.valid}}<br> invalid=>{{register.invalid}}
+    <br> submitted=>{{register.submitted}}
+    <br> touched=>{{register.touched}}
+    <br> value=>{{register.value|json}}
+
+</div>
+
+<form class="container" #register="ngForm" (ngSubmit)="handleregister(register)">
+    <div class="mb-3 ">
+        <label for="userName" class="form-label">userName</label>
+        <input [(ngModel)]="userData.userName" name="name" type="text" class="form-control" id="name" required minlength="5" maxlength="20" #name="ngModel">
+        <div id="emailHelp" class="alert alert-danger">{{name.valid}}</div>
+    </div>
+    <div class="mb-3">
+        <label for="userName" class="form-label">Email</label>
+
+        <input [(ngModel)]="userData.email" name=" email " type="email " class="form-control " required email #email="ngModel">
+    </div>
+    <div class="mb-3 ">
+        <label for="userName " class="form-label ">Password</label>
+
+        <input [(ngModel)]="userData.password " type="password " name="password " class="form-control " #password="ngModel">
+    </div>
+    <div class="mb-3 ">
+        <label for="address " class="form-label "><address></address></label>
+        <input [(ngModel)]="userData.address " name="address " type="text " class="form-control " id="address " required #address="ngModel">
+        <div id="emailHelp " class="alert alert-danger ">{{name.valid}}</div>
+    </div>
+    <!-- <div class="mb-3 form-check ">
+        <input ngModel type="checkbox " class="form-check-input ngModel " id="exampleCheck1 ">
+        <label class="form-check-label " for="exampleCheck1 ">Check me out</label>
+    </div> -->
+    <button name="submit " class="btn btn-primary ">Submit</button>
+</form>

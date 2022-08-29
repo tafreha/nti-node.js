@@ -1,6 +1,6 @@
 const express = require("express")
 const Flutterwave = require("flutterwave-node-v3")
-
+const cors = require("cors")
 const Order = require("../database/models/order.models")
 const Cart = require("../database/models/carts.model")
 const User = require("../database/models/user.model")

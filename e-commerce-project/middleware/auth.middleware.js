@@ -2,7 +2,7 @@ const jwt = require("jsonwebtoken")
 const userModel = require("../database/models/user.model")
 const auth = async(req, res, next) => {
     try {
-        const token = req.header("authentication")
+        const token = req.header("Authorization")
         const decoded = jwt.verify(token, process.env.JWTKEY)
         const user = await userModel.findOne({ _id: decoded._id, "tokens.token": token })
         if (!user) throw new Error("unauth")
@@ -13,8 +13,7 @@ const auth = async(req, res, next) => {
         res.send({
             apiStatus: false,
             data: e,
-            message: e,
-            message
+            message: e.message
         })
     }
 }

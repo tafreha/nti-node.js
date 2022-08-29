@@ -12,9 +12,9 @@ class User {
         try {
             const userData = new userModel(req.body)
             await userData.save()
-            res.send({ apiStatus: true, message: "user registered", data: userData })
+            res.status(200).send({ apiStatus: true, message: "user registered", data: userData })
         } catch (e) {
-            res.send({ apiStatus: false, message: e.message, data: e })
+            res.status(500).send({ apiStatus: false, message: e.message, data: e })
         }
     }
     static single = async(req, res) => {
@@ -51,13 +51,13 @@ class User {
         try {
             const userData = await userModel.login(req.body.email, req.body.password)
             const token = await userData.generateToken()
-            res.send({
+            res.status(200).send({
                 apiStatus: true,
                 message: "logged in",
                 data: { userData, token }
             })
         } catch (e) {
-            res.send({ apiStatus: false, message: e.message, data: e })
+            res.status(500).send({ apiStatus: false, message: e.message, data: e })
         }
     }
     static profile = (req, res) => {
