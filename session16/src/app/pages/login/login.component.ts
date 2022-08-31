@@ -1,31 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { Form, NgForm } from '@angular/forms';
-import { DataService } from 'src/app/services/data.service';
+import { Component } from '@angular/core';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
-  userData={
-    
-    "password":"",
-    "email":"" ,
-   
-   }
-  constructor(private _data:DataService) { }
+export class LoginComponent {
 
-  ngOnInit(): void {
-  }
-  handleLogin(login:NgForm){
-    console.log(this.userData)
-this._data.login(this.userData)
-.subscribe(data=>{
-  console.log(data)
-console.log("tmam")},
-e=>{console.log(e)
-  console.log("error")
-})
-  }
+  constructor() { }
 
 }

@@ -1,0 +1,48 @@
+<div class="alert alert-danger">{{errMsg|json}}</div>
+<form [formGroup]="registerForm" (ngSubmit)="register()" class="container">
+    <div class="mb-3 row">
+        <input class="form-control" placeholder="USER NAME" formControlName="userName">
+        <div class="alert alert-danger" *ngIf="errMsg.userName">{{errMsg.userName}}</div>
+
+        <!-- <p>{{registerForm.controls?.['userName']?.['errors']|json}}</p> -->
+        <div *ngIf="registerForm.controls?.['userName']?.['touched']  ">
+            <p class="alert alert-danger" *ngIf="registerForm.controls?.['userName']?.['errors']?.['required']">*required
+
+            </p>
+            <p class="alert alert-danger" *ngIf="registerForm.controls?.['userName']?.['errors']?.['minlength']">*minlength is 5 chars</p>
+            <p class="alert alert-danger" *ngIf="registerForm.controls?.['userName']?.['errors']?.['maxlength']">*maxlength is 20 chars</p>
+
+        </div>
+    </div>
+    <div class="mb-3 row">
+        <input class="form-control" type="email" placeholder="email" formControlName="email" email>
+        <div class="alert alert-danger" *ngIf="errMsg.email">{{errMsg.email}}</div>
+        <!-- <div *ngIf="registerForm.controls?.['email']?.['touched']  ">
+            <p class="alert alert-danger" *ngIf="registerForm.controls?.['email']?.['errors']?.['required']"> *required
+            </p>
+            <p class="alert alert-danger" *ngIf="registerForm.controls?.['email']?.['errors']?.['email']"> *invalid format email
+            </p>
+        </div> -->
+    </div>
+    <div class="mb-3 row">
+        <input class="form-control" placeholder=" password" formControlName="password" type="password" />
+        <div class="alert alert-danger" *ngIf="errMsg.password">{{errMsg.password}}</div>
+    </div>
+    <!-- <div class="mb-3 row">
+        <input class="form-control" placeholder="confirm password" formControlName="confirmPassword" type="password">
+        <div *ngIf="registerForm.controls?.['password']?.['invalid']" class="alert alert-danger">
+            <p *ngIf="registerForm.controls?.['password']?.['errors']?.['required']"> *required
+            </p>
+            <p *ngIf="registerForm.controls?.['password']?.['errors']?.['minlength']"> *must be more than 8 characters
+            </p>
+            <p *ngIf="registerForm.controls?.['password']?.['errors']?.['pattern']"> *confirm password must be equal to password
+            </p>
+        </div>
+
+    </div> -->
+    <div class="mb-3 row">
+        <input class="form-control" placeholder="address" formControlName="address">
+        <div class="alert alert-danger" *ngIf="errMsg.address">{{errMsg.address}}</div>
+    </div>
+    <button class="btn btn-success" type="submit">register</button>
+</form>

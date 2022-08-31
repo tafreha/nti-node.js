@@ -1,35 +1,71 @@
-<div class="alert alert-primary">
-    valid=>{{register.valid}}<br> invalid=>{{register.invalid}}
-    <br> submitted=>{{register.submitted}}
-    <br> touched=>{{register.touched}}
-    <br> value=>{{register.value|json}}
+<div class="bg-light min-vh-100 d-flex flex-row align-items-center">
+    <c-container>
+        <c-row class="justify-content-center">
+            <c-col lg="7" md="9" xl="6">
+                <c-card class="mx-4">
+                    <c-card-body class="p-4">
+                        <form cForm #register="ngForm" ngSubmitted="handleRegister(register">
+                            <h1>Register</h1>
+                            <p class="text-medium-emphasis">Create your account</p>
+                            <c-input-group class="mb-3">
+                                <span cInputGroupText>
+                  <svg cIcon name="cilUser"></svg>
+                </span>
+                                <input autoComplete="name" class="form-control" placeholder="Username" #name="ngModel" [(ngModel)]="userData.userName" required minlength="5" maxlength="20" />
+                                <div class="alert alert-danger" *ngIf="name.invalid && (name.dirty ||name.touched || register.submitted)">
+                                    <span *ngIf="name.errors?.['required']">name is required</span>
+                                    <span *ngIf="name.errors?.['minlength']"> name must be more than 5 chart</span>
+                                </div>
+                            </c-input-group>
+                            <c-input-group class="mb-3">
+                                <span cInputGroupText>@</span>
+                                <input autoComplete="email" cFormControl placeholder="Email" #email="ngModel" [(ngModel)]="userData.email" email required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2, 4}$" />
+                                <div class="alert alert-danger" *ngIf="email.invalid &&(email.dirty || email.touched || register.submitted)">
+                                    <span *ngIf="email.errors?.['required']"> *email is required</span>
+                                    <span *ngIf="email.errors?.['pattern']">invalid email format</span>
+                                </div>
+                            </c-input-group>
+                            <c-input-group class="mb-3">
+                                <span cInputGroupText>
+                  <svg cIcon name="cilLockLocked"></svg>
+                </span>
+                                <input autoComplete="new-password" cFormControl placeholder="Password" type="password" #password="ngModel" [(ngModel)]="userData.password" required minlength="8" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" />
+                                <div class="alert alert-danger" *ngIf="password.invalid && (password.dirty ||password.touched || register.submitted)">
+                                    <span *ngIf="password.errors?.['required']">password is required</span>
+                                    <span *ngIf="password.errors?.['minlength']"> password must be more than 8 chart</span>
+                                    <span *ngIf="password.errors?.['pattern']"> Must contain at least one number and one uppercase and lowercase letter,
+                                        .</span>
+                                </div>
+                            </c-input-group>
+                            <c-input-group class="mb-4">
+                                <span cInputGroupText>
+                  <svg cIcon name="cilLockLocked"></svg>
+                </span>
+                                <input #confirmPassword="ngModel" [(ngModel)]="userData.confirmPassword" autoComplete="new-password" cFormControl placeholder="Confirm password" type="password" required minlength="8" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" />
+                                <div class="alert alert-danger" *ngIf="password.invalid && (confirmPassword.dirty ||confirmPassword.touched || register.submitted)">
+                                    <span *ngIf="confirmPassword.errors?.['required']">repeate password is required</span>
+                                    <span *ngIf="confirmPassword.errors?.['minlength']"> password must be more than 8 chart</span>
+                                    <span *ngIf="confirmPassword.errors?.['pattern']"> Password & Confirm Password does not match.</span>
+                                </div>
+                            </c-input-group>
+                            <div class="d-grid">
+                                <c-input-group class="mb-3">
+                                    <span cInputGroupText>
+                    <svg cIcon name="address"></svg>
+                  </span>
+                                    <input autoComplete="address" cFormControl placeholder="address" #address='ngModel' [(ngModel)]="userData.address" required/>
+                                    <div class="alert alert-danger" *ngIf="address.invalid && (address.dirty ||address.touched || register.submitted)">
+                                        <span *ngIf="address.errors?.['required']">address is required</span>
 
+                                    </div>
+                                </c-input-group>
+                                <button cButton color="success">Create Account</button>
+                            </div>
+                        </form>
+                    </c-card-body>
+                </c-card>
+            </c-col>
+        </c-row>
+    </c-container>
 </div>
-
-<form class="container" #register="ngForm" (ngSubmit)="handleregister(register)">
-    <div class="mb-3 ">
-        <label for="userName" class="form-label">userName</label>
-        <input [(ngModel)]="userData.userName" name="name" type="text" class="form-control" id="name" required minlength="5" maxlength="20" #name="ngModel">
-        <div id="emailHelp" class="alert alert-danger">{{name.valid}}</div>
-    </div>
-    <div class="mb-3">
-        <label for="userName" class="form-label">Email</label>
-
-        <input [(ngModel)]="userData.email" name=" email " type="email " class="form-control " required email #email="ngModel">
-    </div>
-    <div class="mb-3 ">
-        <label for="userName " class="form-label ">Password</label>
-
-        <input [(ngModel)]="userData.password " type="password " name="password " class="form-control " #password="ngModel">
-    </div>
-    <div class="mb-3 ">
-        <label for="address " class="form-label "><address></address></label>
-        <input [(ngModel)]="userData.address " name="address " type="text " class="form-control " id="address " required #address="ngModel">
-        <div id="emailHelp " class="alert alert-danger ">{{name.valid}}</div>
-    </div>
-    <!-- <div class="mb-3 form-check ">
-        <input ngModel type="checkbox " class="form-check-input ngModel " id="exampleCheck1 ">
-        <label class="form-check-label " for="exampleCheck1 ">Check me out</label>
-    </div> -->
-    <button name="submit " class="btn btn-primary ">Submit</button>
-</form>
+<router-outlet></router-outlet>

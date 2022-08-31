@@ -1,0 +1,65 @@
+<div class="alert alert-primary">
+    <p> valid =>{{addProduct.valid}}</p>
+    <p> value =>{{addProduct.value}}</p>
+    <p> touched =>{{addProduct.touched}}</p>
+    <p> dirty =>{{addProduct.dirty}}</p>
+</div>
+<form [formGroup]="addProduct" (ngSubmit)="handleAddProduct()" class="container">
+    <div class="mb-3 row">
+        <input class="form-control" placeholder="product name" formControlName="name">
+        <!-- <p>{{addProduct.controls?.['userName']?.['errors']|json}}</p> -->
+        <div *ngIf="addProduct.controls?.['name']?.['invalid']" class="alert alert-danger">
+            <p *ngIf="addProduct.controls?.['name']?.['errors']?.['required']">*required
+
+            </p>
+            <p *ngIf="addProduct.controls?.['name']?.['errors']?.['minlength']">*minlength is 5 chars</p>
+            <p *ngIf="addProduct.controls?.['name']?.['errors']?.['maxlength']">*maxlength is 20 chars</p>
+
+        </div>
+    </div>
+    <div class="mb-3 row">
+        <input class="form-control" placeholder="category" formControlName="category">
+        <!-- <p>{{addProduct.controls?.['userName']?.['errors']|json}}</p> -->
+        <div *ngIf="addProduct.controls?.['category']?.['invalid']" class="alert alert-danger">
+            <p *ngIf="addProduct.controls?.['category']?.['errors']?.['required']">*required
+
+            </p>
+            <p *ngIf="addProduct.controls?.['category']?.['errors']?.['minlength']">*minlength is 5 chars</p>
+            <p *ngIf="addProduct.controls?.['category']?.['errors']?.['maxlength']">*maxlength is 20 chars</p>
+
+        </div>
+    </div>
+    <div class="mb-3 row">
+        <input class="form-control" placeholder="description" formControlName="description">
+        <!-- <p>{{addProduct.controls?.['userName']?.['errors']|json}}</p> -->
+        <div *ngIf="addProduct.controls?.['description']?.['invalid']" class="alert alert-danger">
+            <p *ngIf="addProduct.controls?.['description']?.['errors']?.['required']">*required
+
+            </p>
+            <p *ngIf="addProduct.controls?.['description']?.['errors']?.['minlength']">*minlength is 5 chars</p>
+            <p *ngIf="addProduct.controls?.['description']?.['errors']?.['maxlength']">*maxlength is 20 chars</p>
+
+        </div>
+    </div>
+    <div class="mb-3 row">
+        <input type="number" class="form-control" placeholder="price" formControlName="price">
+        <div *ngIf="addProduct.controls?.['price']?.['invalid']" class="alert alert-danger">
+            <p *ngIf="addProduct.controls?.['price']?.['errors']?.['required']">*required
+
+            </p>
+
+        </div>
+    </div>
+    <div class="mb-3 row">
+        <input type="file" class="form-control" formControlName="Images">
+        <div *ngIf="addProduct.controls?.['Images']?.['invalid']" class="alert alert-danger">
+            <p *ngIf="addProduct.controls?.['Images']?.['errors']?.['required']">*required
+
+            </p>
+
+
+        </div>
+    </div>
+
+    <button class="btn btn-success" type="submit">register</button>
+</form>

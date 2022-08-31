@@ -1,33 +1,34 @@
 import { Component, OnInit } from '@angular/core';
-import { Form, NgForm } from '@angular/forms';
+import { NgForm } from '@angular/forms';
 import { DataService } from 'src/app/services/data.service';
+import { Directive } from '@angular/core';
+
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
-})
-export class RegisterComponent implements OnInit {
+  styleUrls: ['./register.component.scss']
+  })
 
-  userData={
-    "userName":"",
-    "password":"",
-    "email":"" ,
-    "address":"", 
-   }
+export class RegisterComponent  {
+userData={
+  userName:"",
+  email:"",
+  password:"",
+  confirmPassword:"",
+  address:"",
+}
   constructor(private _data:DataService) { }
-
-  ngOnInit(): void {
-  }
-  
-  handleregister(register:NgForm){
+handleRegister(register:NgForm){
+  if(register.valid){
     console.log(this.userData)
-this._data.register(this.userData)
-.subscribe(data=>{
-  console.log(data)
-console.log("tmam")},
-e=>{console.log(e)
-  console.log("error")
-})
+        this._data.register(this.userData)
+        .subscribe(data => {console.log(data)
+        console.log("done")},
+        e=>{
+          console.log(e)
+        console.log("error")
+      })
   }
-
+}
 }

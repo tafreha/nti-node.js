@@ -1,0 +1,16 @@
+{{id}}
+<div class="row" *ngIf="isLoaded&&errMsg==''; else loading">
+    <div class="col-3">
+        <div class="border border-3 m-3">
+            <img [src]="img.url" class="img-fluid">
+            <h6>{{img.title}}</h6>
+        </div>
+    </div>
+</div>
+<ng-template #loading>
+    <div class="alert alert-danger" *ngIf="!isLoaded&& errMsg==''"> <img src="assets/Loading_icon.gif">
+    </div>
+    <div class="alert alert-danger" *ngIf="isLoaded&& errMsg!=''">
+        {{errMsg}}
+    </div>
+</ng-template>
