@@ -1,8 +1,17 @@
 <div class="row" *ngIf="isLoaded&&errMsg==''; else loading">
-    <div class="col-3" *ngFor="let img of imgs" routerLink="/user/all/{{img.id}}">
+    <!-- {{ items|json}} -->
+    <div class="col-3" *ngFor="let item of items.data" routerLink="/product/all/{{item.id}}">
         <div class="border border-3 m-3">
-            <img [src]="img.url" class="img-fluid">
-            <h6>{{img.title}}</h6>
+            <!-- <img [src]="item.myImg.url" class="img-fluid"> -->
+            <h6>{{item.name}}</h6>
+            <h6>{{item.category}}</h6>
+            <h6>{{item.description}}</h6>
+            <h6>{{item.price}}</h6>
+            <!-- <a class="btn btn-success">add to cart</a><br> -->
+            <a class="btn btn-danger text-white" (click)="delete(item._id)">delete</a>
+            <a class="btn btn-danger text-white " (click)="edit(item._id) ">edit</a>
+            <td><a class="btn btn-primary text-white " (click)="showDetails(item._id) ">show details</a></td>
+
         </div>
     </div>
 </div>

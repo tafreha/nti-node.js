@@ -32,7 +32,7 @@ export class AuthService {
   }
  
   editUsers(id:string,data:User):Observable<any>{
-    return this._http.put(`${this.baseUrl}edit/${id}`,data)
+    return this._http.patch(`${this.baseUrl}edit/${id}`,data)
 
   }
   profile():Observable<any>{
@@ -55,12 +55,7 @@ export class AuthService {
 
   }
 
-  getImages():Observable<any>{
-    return this._http.get("http://localhost:3000/product")
-       }
-       getSingleImg(id:string):Observable<any>{
-        return this._http.get(`https://localhost:3000/product/single/${id}`)
-       }
+ 
        getAllUsers():Observable<any>{
         // return this._http.get("http://localhost:3000/user")
         return this._http.get(`${this.baseUrl}`)

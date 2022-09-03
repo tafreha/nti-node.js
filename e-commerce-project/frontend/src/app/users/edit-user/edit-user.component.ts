@@ -11,9 +11,10 @@ import { AuthService } from 'src/app/providers/services/auth.service';
   styleUrls: ['./edit-user.component.css']
 })
 export class EditUserComponent implements OnInit {
-  errMsg=""
   id:any
-  user:any={}  
+  user:any={} 
+isLoaded:boolean=false
+errMsg:string="" 
   editForm:FormGroup=new FormGroup({
     userName:new FormControl(),
   email:new FormControl(),
@@ -23,20 +24,37 @@ export class EditUserComponent implements OnInit {
   constructor(private _auth:AuthService,private _router:Router, private _activatedRoute:ActivatedRoute) { }
 
   ngOnInit(): void {
-    if(this._auth.userData)
+
+ if(this._auth.userData)
     {
       this.id=this._activatedRoute.snapshot.params["id"]
-if(this.id)
-console.log(this.id.userData)
-
-    this.editForm.patchValue(this.id.data)
-
+this.getSingleUser(this.id)
+   
     this.edit(this.id)
   }
     else this._router.navigateByUrl("/login")
   }
 
- 
+  getSingleUser(id:any){
+    this._auth.getSingleUser(id).subscribe(
+      res=>{console.log(res.data)
+        this.user=res.data
+        this.editForm.patchValue(this.user)
+
+
+  
+      },
+      e=>{
+        this.errMsg=e.message
+        this.isLoaded=true
+      },
+      ()=>{
+        this.isLoaded=true
+    
+      }
+
+    )
+  }
   edit(id:string){
     if(this._auth.userData)
 this._auth.editUsers(id,this.editForm.value).subscribe(

@@ -22,6 +22,9 @@
                     <a class="nav-link" routerLink="/product/add" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact:true}">add product</a>
                 </li>
                 <li class="nav-item" *ngIf="_auth.isLoggedIn">
+                    <a class="nav-link" routerLink="/product/image" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact:true}">add image</a>
+                </li>
+                <li class="nav-item" *ngIf="_auth.isLoggedIn">
                     <a class="nav-link" routerLink="/profile" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact:true}">{{_auth.userData?.['userName']}}</a>
                 </li>
                 <li class="nav-item" *ngIf="_auth.isLoggedIn">

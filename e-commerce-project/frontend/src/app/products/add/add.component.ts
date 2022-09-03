@@ -12,6 +12,7 @@ import {ProductService} from 'src/app/providers/services/product.service'
 export class AddComponent 
 implements OnInit {
   errMsg: any= {}
+file:any
 
   addProduct:FormGroup =new FormGroup({
 name:new FormControl("",[
@@ -25,12 +26,11 @@ Validators.required,
 Validators.maxLength(40)
 ]),
 description:new FormControl("",[
-  Validators.minLength(160),
+  Validators.minLength(20),
 Validators.required,
 Validators.maxLength(500)
 ]),
 price:new FormControl(),
-Images:new FormControl()
 
   })
   constructor(private _auth:AuthService, private _authProduct:ProductService, private _router:Router) { }
@@ -38,16 +38,21 @@ Images:new FormControl()
   ngOnInit(): void {
   }
   handleAddProduct(){
+
     let products:any=this.addProduct.value 
      if(this.addProduct.valid)
     console.log(this.addProduct.value)
+
     this._authProduct.add(products).subscribe(
-      res=>{console.log(res), console.log("done")},
+      res=>{console.log(res), console.log("done")
+      this._router.navigateByUrl("/product/image")
+
+    },
       e=>{
         this.errMsg=e
       },
       ()=>{
-        this._router.navigateByUrl("/home")
+        this._router.navigateByUrl("/product/image")
       }
     )
   }

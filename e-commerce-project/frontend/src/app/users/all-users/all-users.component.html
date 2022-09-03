@@ -25,9 +25,10 @@
                         <td>{{user.address}}</td>
                         <td>{{user.createdAt}}</td>
                         <td>{{user.updatedAt}}</td>
-                        <td> <a class="btn btn-danger text-white" (click)="delete(user._id)">delete</a></td>
-                        <td> <a class="btn btn-danger text-white" (click)="edit(user._id)">edit</a></td>
-                        <td><a class="btn btn-primary text-white" (click)="showDetails(user._id)">show details</a></td>
+                        <td>
+                            <a class="btn btn-danger text-white" (click)="delete(user._id)">delete</a></td>
+                        <td> <a class="btn btn-danger text-white " (click)="edit(user._id) ">edit</a></td>
+                        <td><a class="btn btn-primary text-white " (click)="showDetails(user._id) ">show details</a></td>
                     </tr>
                 </tbody>
             </table>
@@ -38,9 +39,9 @@
     </div>
 
     <ng-template #loading>
-        <div class="alert alert-danger" *ngIf="!isLoaded&& errMsg==''"> <img src="assets/Loading_icon.gif">
+        <div class="alert alert-danger " *ngIf="!isLoaded&& errMsg=='' "> <img src="assets/Loading_icon.gif ">
         </div>
-        <div class="alert alert-danger" *ngIf="isLoaded&& errMsg!=''">
+        <div class="alert alert-danger " *ngIf="isLoaded&& errMsg!='' ">
             {{errMsg}}
         </div>
     </ng-template>

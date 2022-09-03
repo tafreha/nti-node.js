@@ -1,9 +1,12 @@
 import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
+import { ImagesComponent } from './images/images.component';
 import { AddComponent } from './products/add/add.component';
+import { DeleteComponent } from './products/delete/delete.component';
 import { EditComponent } from './products/edit/edit.component';
 import { SingleComponent } from './products/single/single.component';
+import { IsloginGuard } from './providers/guards/islogin.guard';
 import { AllUsersComponent } from './users/all-users/all-users.component';
 import { DeleteUserComponent } from './users/delete-user/delete-user.component';
 import { EditUserComponent } from './users/edit-user/edit-user.component';
@@ -20,7 +23,7 @@ const routes: Routes = [
 {path:"home",redirectTo:""},
 {path:"login",redirectTo:"/login"},
   {path:"register",component:RegisterComponent},
-  {path:"profile",component:ProfileComponent},
+  {path:"profile",component:ProfileComponent,canActivate:[IsloginGuard]},
 {path:"user/single/:id",component:SingleUserComponent},
 {path:"login", component:LoginComponent},
 {path:"logout",component:LogoutComponent},
@@ -29,7 +32,9 @@ const routes: Routes = [
 {path:"user/delete/:id",component:DeleteUserComponent},
 {path:"user/all/:id",component:SingleUserComponent},
 {path:"product/add",component:AddComponent},
-{path:"viewDetails/:id",component:ViewDetailsComponent}
+{path:"viewDetails/:id",component:ViewDetailsComponent},
+{path:"product/image",component:ImagesComponent},
+{path:"product/delete/:id",component:DeleteComponent}
 
 ];
 

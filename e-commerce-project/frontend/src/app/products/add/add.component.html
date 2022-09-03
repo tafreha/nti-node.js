@@ -31,13 +31,13 @@
     </div>
     <div class="mb-3 row">
         <input class="form-control" placeholder="description" formControlName="description">
-        <!-- <p>{{addProduct.controls?.['userName']?.['errors']|json}}</p> -->
+
         <div *ngIf="addProduct.controls?.['description']?.['invalid']" class="alert alert-danger">
             <p *ngIf="addProduct.controls?.['description']?.['errors']?.['required']">*required
 
             </p>
-            <p *ngIf="addProduct.controls?.['description']?.['errors']?.['minlength']">*minlength is 5 chars</p>
-            <p *ngIf="addProduct.controls?.['description']?.['errors']?.['maxlength']">*maxlength is 20 chars</p>
+            <p *ngIf="addProduct.controls?.['description']?.['errors']?.['minlength']">*minlength is 20 chars</p>
+            <p *ngIf="addProduct.controls?.['description']?.['errors']?.['maxlength']">*maxlength is 500 chars</p>
 
         </div>
     </div>
@@ -50,16 +50,7 @@
 
         </div>
     </div>
-    <div class="mb-3 row">
-        <input type="file" class="form-control" formControlName="Images">
-        <div *ngIf="addProduct.controls?.['Images']?.['invalid']" class="alert alert-danger">
-            <p *ngIf="addProduct.controls?.['Images']?.['errors']?.['required']">*required
 
-            </p>
+    <button class="btn btn-success" type="submit">add product</button>
 
-
-        </div>
-    </div>
-
-    <button class="btn btn-success" type="submit">register</button>
 </form>

@@ -8,13 +8,15 @@ import { AuthService } from 'src/app/providers/services/auth.service';
 })
 export class LogoutComponent implements OnInit {
 
-  constructor(private _router:Router) { }
+  constructor(private _router:Router, private _auth:AuthService) { }
 
   ngOnInit(): void {
     this.logout()
   }
   logout(){
     localStorage.removeItem('Ecomerce1Token')
+this._auth.isLoggedIn=false
+this._auth.userData=null
     this._router.navigateByUrl("/login")
   }
 

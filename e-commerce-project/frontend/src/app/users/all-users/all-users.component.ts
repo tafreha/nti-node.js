@@ -24,7 +24,10 @@ export class AllUsersComponent implements OnInit {
     data=>{
       console.log(data)
       this.users=data.data
-    
+      let myId:any = this._auth.userData?.['_id']
+    this.users = this.users.filter(function(user){ 
+      return user._id != myId
+    } )
 
     },
     e=>{

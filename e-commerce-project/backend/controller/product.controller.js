@@ -12,9 +12,10 @@ class product {
     static add = async(req, res) => {
         try {
             const data = new productModel(req.body)
+                // data.myImg = req.file.path
             await data.save()
             res.status(200).send({ apiStatus: true, message: "product added", data })
-            this.upImg()
+                // this.upImg()
         } catch (e) {
             res.status(500).send({ apiStatus: false, message: e.message, data: e })
         }
@@ -62,6 +63,8 @@ class product {
     static upImg = async(req, res) => {
         // req.product.images = req.file.filename
         // await req.product.save()
+        const data = new productModel(req.body)
+        data.myImg = req.file.path
         res.send("done")
     }
 }

@@ -10,9 +10,9 @@ const productSchema =
             type: Number,
             required: true,
         },
-        images: {
+        myImg: {
             type: String,
-            required: true
+            // required: true
         },
     }, { timestamp: true })
 
