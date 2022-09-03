@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, TitleStrategy } from '@angular/router';
+import { ActivatedRoute, Router, TitleStrategy } from '@angular/router';
 import { AuthService } from 'src/app/providers/services/auth.service';
 @Component({
   selector: 'app-single',
@@ -8,18 +8,23 @@ import { AuthService } from 'src/app/providers/services/auth.service';
 })
 export class SingleUserComponent implements OnInit {
 id:any
-img:any={}
+user:any={}
 isLoaded:boolean=false
 errMsg:string=""
-  constructor(private _auth:AuthService, private _activatedRoute:ActivatedRoute) { }
+  constructor(private _auth:AuthService, private _activatedRoute:ActivatedRoute , private _router:Router) { }
 
   ngOnInit(): void {
     this.id=this._activatedRoute.snapshot.params["id"]
-    this.getSingle(this.id)
+    this.getSingleUser(this.id)
   }
-  getSingle(id:any){
-    this._auth.getSingleImg(id).subscribe(
-      res=>console.log(res),
+  
+  getSingleUser(id:any){
+    this._auth.getSingleUser(id).subscribe(
+      res=>{console.log(res)
+        this.user=res.data
+
+  
+      },
       e=>{
         this.errMsg=e.message
         this.isLoaded=true
@@ -31,5 +36,11 @@ errMsg:string=""
 
     )
   }
+  delete( id:string ){
+    if(this._auth.isLoggedIn) this._router.navigateByUrl(`/user/delete/${id}`)
+  }
+  edit(id:string){
+         if(this._auth.isLoggedIn) this._router.navigateByUrl(`/user/edit/${id}`)
 
+  }
 }

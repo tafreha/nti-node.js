@@ -25,6 +25,8 @@ import { HomeComponent } from './home/home.component';
 import {SingleUserComponent} from './users/singleuser/single.component'
 import { AuthInterceptor } from './providers/interceptors/auth.interceptor';
 import { ProfileComponent } from './users/profile/profile.component';
+import { ViewDetailsComponent } from './users/view-details/view-details.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,7 +48,8 @@ import { ProfileComponent } from './users/profile/profile.component';
     AllProductsComponent,
     AllComponent,
     HomeComponent,
-    ProfileComponent
+    ProfileComponent,
+    ViewDetailsComponent
   ],
   imports: [
     BrowserModule,

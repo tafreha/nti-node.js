@@ -10,7 +10,7 @@ const auth = async(req, res, next) => {
         req.token = token
         next()
     } catch (e) {
-        res.send({
+        res.status(500).send({
             apiStatus: false,
             data: e,
             message: e.message

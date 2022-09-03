@@ -5,14 +5,13 @@
         <div class="alert alert-danger" *ngIf="errMsg.userName">{{errMsg.userName}}</div>
 
         <!-- <p>{{registerForm.controls?.['userName']?.['errors']|json}}</p> -->
-        <div *ngIf="registerForm.controls?.['userName']?.['touched']  ">
+        <!-- <div *ngIf="registerForm.controls?.['userName']?.['touched']  ">
             <p class="alert alert-danger" *ngIf="registerForm.controls?.['userName']?.['errors']?.['required']">*required
 
             </p>
             <p class="alert alert-danger" *ngIf="registerForm.controls?.['userName']?.['errors']?.['minlength']">*minlength is 5 chars</p>
-            <p class="alert alert-danger" *ngIf="registerForm.controls?.['userName']?.['errors']?.['maxlength']">*maxlength is 20 chars</p>
+            <p class="alert alert-danger" *ngIf="registerForm.controls?.['userName']?.['errors']?.['maxlength']">*maxlength is 20 chars</p> -->
 
-        </div>
     </div>
     <div class="mb-3 row">
         <input class="form-control" type="email" placeholder="email" formControlName="email" email>

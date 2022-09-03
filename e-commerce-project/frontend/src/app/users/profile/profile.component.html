@@ -1,1 +1,21 @@
-<p>profile works!</p>
+<form [formGroup]="editForm" (ngSubmit)="edit()" class="container">
+    <div class="mb-3 row">
+        <input class="form-control" placeholder="USER NAME" formControlName="userName">
+
+    </div>
+    <div class="mb-3 row">
+        <input class="form-control" type="email" placeholder="email" formControlName="email" email>
+
+
+    </div>
+    <div class="mb-3 row">
+        <input class="form-control" placeholder=" password" formControlName="password" type="password" />
+
+    </div>
+
+    <div class="mb-3 row">
+        <input class="form-control" placeholder="address" formControlName="address">
+
+    </div>
+    <button class="btn btn-success" type="submit">edit</button>
+</form>

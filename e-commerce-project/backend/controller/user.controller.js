@@ -20,7 +20,7 @@ class User {
     static single = async(req, res) => {
         try {
             const data = await userModel.findById(req.params.id)
-            res.status(200).send({ apiStatus: true, message: "all users fetched", data })
+            res.status(200).send({ apiStatus: true, message: "all users fetched", data: data })
         } catch (e) {
             res.status(500).send({ apiStatus: false, message: e.message, data: e })
         }
@@ -56,6 +56,8 @@ class User {
                 message: "logged in",
                 data: { userData, token }
             })
+
+
         } catch (e) {
             res.status(500).send({ apiStatus: false, message: e.message, data: e })
         }

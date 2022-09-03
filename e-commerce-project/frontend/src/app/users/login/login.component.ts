@@ -27,15 +27,23 @@ export class LoginComponent implements OnInit
     constructor(private _auth:AuthService,private _router:Router) { }
   
     ngOnInit(): void {
+      if(this._auth.isLoggedIn) this._router.navigateByUrl("/profile")
     }
     login(){
       let userData:User=this.loginForm.value
       if(this.loginForm.valid)
       console.log(this.loginForm.value)
       this._auth.login(userData).subscribe(
-        res=> {console.log(res), console.log("done")},
+        res=> {
+          console.log(res)
+          console.log("done")
+        localStorage.setItem("Ecomerce1Token",res.data.token)
+    this._auth.isLoggedIn=true
+    this._auth.userData=res.data.userData
+    },
         e=>{
-         
+          this.errMsg= e
+
           if(e.error.message.includes("email")) this.errMsg.email=e.error.message
           if(e.error.message.includes("password")) this.errMsg.password=e.error.message
           

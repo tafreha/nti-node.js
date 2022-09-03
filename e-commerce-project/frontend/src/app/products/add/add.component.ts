@@ -1,13 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup,Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/providers/services/auth.service';
+import {ProductService} from 'src/app/providers/services/product.service'
 
 @Component({
   selector: 'app-add',
   templateUrl: './add.component.html',
   styleUrls: ['./add.component.css']
 })
-export class AddComponent implements OnInit {
-  addProduct =new FormGroup({
+export class AddComponent 
+implements OnInit {
+  errMsg: any= {}
+
+  addProduct:FormGroup =new FormGroup({
 name:new FormControl("",[
   Validators.minLength(5),
 Validators.required,
@@ -27,12 +33,23 @@ price:new FormControl(),
 Images:new FormControl()
 
   })
-  constructor() { }
+  constructor(private _auth:AuthService, private _authProduct:ProductService, private _router:Router) { }
 
   ngOnInit(): void {
   }
-  handleAddProduct(){    if(this.addProduct.valid)
+  handleAddProduct(){
+    let products:any=this.addProduct.value 
+     if(this.addProduct.valid)
     console.log(this.addProduct.value)
+    this._authProduct.add(products).subscribe(
+      res=>{console.log(res), console.log("done")},
+      e=>{
+        this.errMsg=e
+      },
+      ()=>{
+        this._router.navigateByUrl("/home")
+      }
+    )
   }
 
 }

@@ -7,7 +7,7 @@
 <form [formGroup]="addProduct" (ngSubmit)="handleAddProduct()" class="container">
     <div class="mb-3 row">
         <input class="form-control" placeholder="product name" formControlName="name">
-        <!-- <p>{{addProduct.controls?.['userName']?.['errors']|json}}</p> -->
+        <!-- <p>{{addProduct.controls?.['name']?.['errors']|json}}</p> -->
         <div *ngIf="addProduct.controls?.['name']?.['invalid']" class="alert alert-danger">
             <p *ngIf="addProduct.controls?.['name']?.['errors']?.['required']">*required
 
